@@ -3,17 +3,26 @@
 #
 import sys
 
-elements = []
+if __name__ == "__main__":
 
-def take_element(element):
+    curkey = None
+    total = 0
 
-    return element.split(",")[1]
+    for line in sys.stdin:
 
-for row in sys.stdin:
-    elements.append(row)
+        key, val = line.split("\t")
+        val = int(val)
 
-else:
-    elements = sorted(elements, key = take_element)
+        if key == curkey:
+            if val > total:
+                total = val
+            else:
+                val = total
+        else:
+            if curkey is not None:
+                sys.stdout.write("{}\t{}\n".format(curkey, total))
 
-    for element in elements:
-        sys.stdout.write(element)
+            curkey = key
+            total = val
+
+    sys.stdout.write("{}\t{}\n".format(curkey, total))
