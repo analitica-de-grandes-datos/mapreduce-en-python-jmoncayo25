@@ -3,8 +3,5 @@
 #
 import sys
 
-for row in sys.stdin:
-
-    data = "\t".join(row.split(",")[3:5])
-
-    sys.stdout.write('{}\n'.format(data))
+for line in sys.stdin:
+        sys.stdout.write('{}\t{}\n'.format(line.split(',')[3],line.split(',')[4]))
