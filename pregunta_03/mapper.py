@@ -2,20 +2,9 @@
 # >>> Escriba el codigo del mapper a partir de este punto <<<
 #
 import sys
+if __name__ == "__main__":
 
-elements = []
-
-def take_element(element):
-
-    return element.split(",")[1]
-
-for row in sys.stdin:
-    elements.append(row)
-
-else:
-    elements = sorted(elements, key = take_element)
-
-    for element in elements:
-        sys.stdout.write(element)
+    for line in sys.stdin:
+        sys.stdout.write("{}\t{}\n".format(line.split(",")[3], line.split(",")[4]))
 
 #sys.stdout.write(element)
