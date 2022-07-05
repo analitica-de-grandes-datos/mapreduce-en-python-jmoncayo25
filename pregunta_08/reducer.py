@@ -1,24 +1,24 @@
 #
 # >>> Escriba el codigo del reducer a partir de este punto <<<
 #
+import sys
+import operator 
+
 if __name__ == '__main__':
-
-    curkey = None
-    values = []
     
+    lista = {}
+
     for line in sys.stdin:
-
-        key, val = line.split("\t")
-        val = float(val)
-
-        if key == curkey:
-            values.append(val)
-        else:
-
-            if curkey is not None:
-                
-                sys.stdout.write("{}\t{}\t{}\n".format(curkey, sum(values), sum(values)/len(values)))
-                values = []
-
-            curkey = key
-            values.append(val)
+       line = line.strip()
+       letter, value = line.split('\t')
+       
+       if letter in lista:
+           lista[letter].append(float(value))
+       else: 
+           lista[letter] = []
+           lista[letter].append(float(value))
+           
+    for letter in lista.keys():
+        sum_letter = sum(lista[letter])
+        mean_letter = sum(lista[letter])/ len(lista[letter])
+        print('%s\t%s\t%s'% (letter, sum_letter, mean_letter)) #Impresión
