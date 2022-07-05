@@ -1,7 +1,7 @@
 #
 # >>> Escriba el codigo del mapper a partir de este punto <<<
 #
-iimport sys
+import sys
 
 if __name__ == '__main__':
 
